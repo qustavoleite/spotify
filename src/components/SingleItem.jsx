@@ -1,15 +1,16 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCirclePlay } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 
-export const SingleItem = (props) => {
+export const SingleItem = ({ id, name , image, banner, artist, idPath}) => {
   return (
-    <div className='single-item'>
+    <Link to={`${idPath}/${id}`} className='single-item'>
       <div className='single-item__div-image-button'>
         <div className='single-item__div-image'>
           <img
             className='single-item__image'
-            src='https://i.scdn.co/image/ab676161000051744dcd8a3bff84cd7703892cf4'
-            alt='Imagem do Artista X'
+            src={image}
+            alt={`Imagem do artista ${name}`}
           />
         </div>
 
@@ -18,13 +19,11 @@ export const SingleItem = (props) => {
 
       <div className='single-item__texts'>
         <div className='single-item__2lines'>
-          <p className='single-item__title'>
-            Amo Noite E Dia - Live In Sao Paulo / 2010
-          </p>
+          <p className='single-item__title'>{name}</p>
         </div>
 
-        <p className='single-item__type'>Artista</p>
+        <p className='single-item__type'>{artist ?? 'Artista'}</p>
       </div>
-    </div>
+    </Link>
   )
 }
